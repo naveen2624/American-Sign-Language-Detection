@@ -4,10 +4,10 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
-model_dict = pickle.load(open('./model.p', 'rb'))
+model_dict = pickle.load(open('./trained_data/model.p', 'rb'))
 model = model_dict['model']
 
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
@@ -15,7 +15,17 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
-labels_dict = {0: 'A', 1: 'B', 2: 'L'}
+# Create the labels_dict mapping
+labels_dict = {
+    0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I',
+    9: 'J', 10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q',
+    17: 'R', 18: 'S', 19: 'T', 20: 'U', 21: 'V', 22: 'W', 23: 'X', 24: 'Y',
+    25: 'Z', 26: '1', 27: '2', 28: '3', 29: '4', 30: '5', 31: '6', 32: '7',
+    33: '8', 34: '9', 35:'0', 36:'I Love You', 37:'Heart', 38:'Good Luck',
+    39:'Thanks', 40:'OK',41:'Very Good'
+}
+
+
 while True:
 
     data_aux = []
